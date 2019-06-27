@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900,400italic|Source+Code+Pro:400' rel='stylesheet' type='text/css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+    <script type='text/javascript' src='js/sheetsee.js'></script>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
+  </head>
+  <style>
+    #Pagination {border-top: 4px solid #CCF4FF; margin: 10px 0px; padding-top: 10px; display: inline-block;}
+    #Pagination a {cursor: pointer;}
+    .no-pag {color: #acacac; border: none;}
+    .no-pag:hover {color: #acacac;}
+    input {border: none; border-bottom: 1px solid #333;margin: 10px 0px; width: 200px; font-size: 16px; padding-bottom: 6px;}
+    .tHeader {padding: 8px; cursor: pointer; text-align: left;}
+  </style>
+  <body>
+  <div class="container">
+    <input id="fullTableFilter" type="text" placeholder="Filtrar por.."></input>
+    <a class="clear">Borrar</a>
+    <div id="fullTable">Cargando...</div>
+
+  </div>
+
+  <canvas id="myChart" width="400" height="400"></canvas>
+
+  <script id="fullTable_template" type="text/html">
+    <table>
+      <tr><th class="tHeader">Nombre</th><th class="tHeader">Apellido</th><th class="tHeader">Fecha</th><th class="tHeader">Localidad</th><th class="tHeader">Provincia</th><th class="tHeader">Nacionalidad</th><th class="tHeader">Causa de muerte</th><th class="tHeader">Fuente</th></tr>
+        {{#rows}}
+          <tr><td>{{nombre}}</td><td>{{apellido}}</td><td>{{fecha}}</td><td>{{localidad}}</td><td>{{pcia}}</td><td>{{nacionalidad}}</td><td>{{causas}}</td><td>{{fuente}}</td></tr>
+        {{/rows}}
+    </table>
+  </script>
+
+  <!-- <script type="text/javascript">
+
+  </script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+<script src="js/index.js"></script>
+
+  </body>
+</html>
