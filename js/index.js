@@ -10,21 +10,39 @@ function myData (data) {
     "tableDiv": "#fullTable",
     "filterDiv": "#fullTableFilter"
   }
-  console.log(tableOptions);
+  console.log(data)
   Sheetsee.makeTable(tableOptions)
   Sheetsee.initiateTableFilter(tableOptions)
 
+  let grouped = data.reduce(function (accu, item){
+    let year = Number(item.fecha.split("/").pop());
+    if(accu[year] != undefined) {
+    accu[year]++;
+   }
+
+   return accu;
+   }, {
+   18:0,
+   19:0
+   })
+
+   console.log(grouped);
+
+   new Chart(document.getElementById("pie-chart"), {
+     type: 'pie',
+     data: {
+       labels: ["2018", "2019"],
+       datasets: [{
+         label: "Cantidad",
+         backgroundColor: ["#3e95cd", "#8e5ea2"],
+         data:  [grouped[18] , grouped[19]]
+       }]
+     },
+     options: {
+       title: {
+         display: true,
+         text: 'Cantidad de muertes por crimenes de odio hacia la identidad de género'
+       }
+     }
+   });
 }
-
-
-// var jsonObject = JSON.parse(tableOptions);
-
-// console.log(jsonObject);
-
-const CHART = document.getElementById("myChart");
-const data = tableOptions.data;
-
-let myChart = new Chart(CHART, data, {
-  type: 'line',
-  data: data
-});
